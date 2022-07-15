@@ -21,7 +21,7 @@ const VideoForm = () => {
 		duration: 0,
 	});
 	const [errors, setErrors] = useState({ name: "", artist: "" });
-	const { videos, createSongProgress, updateSongProgress } = useSelector(
+	const { videos, createVideoProgress, updateVideoProgress } = useSelector(
 		(state) => state.videos
 	);
 	const { id } = useParams();
@@ -61,10 +61,10 @@ const VideoForm = () => {
 		const { error } = Joi.object(schema).validate(data);
 		if (!error) {
 			if (id === "new") {
-				const res = await createSong(data, dispatch);
+				const res = await createVideo(data, dispatch);
 				res && history.push("/videos");
 			} else {
-				const res = await updateSong(id, data, dispatch);
+				const res = await updateVideo(id, data, dispatch);
 				res && history.push("/videos");
 			}
 		} else {
@@ -76,13 +76,13 @@ const VideoForm = () => {
 		<div className={styles.container}>
 			<Paper className={styles.form_container}>
 				<h1 className={styles.heading}>
-					{id === "new" ? "Adicionar nova Música" : "Editar Música"} <MusicNoteIcon />
+					{id === "new" ? "Adicionar novo Video" : "Editar Video"} <MusicNoteIcon />
 				</h1>
 				<form onSubmit={handleSubmit}>
 					<div className={styles.input_container}>
 						<TextField
 							name="name"
-							label="Título da Música"
+							label="Título do Video"
 							handleInputState={handleInputState}
 							handleErrorState={handleErrorState}
 							schema={schema.name}
@@ -105,9 +105,9 @@ const VideoForm = () => {
 					</div>
 					<div className={styles.file_container}>
 						<FileInput
-							label="Escolha a Música"
+							label="Escolha o Video"
 							icon={<MusicNoteIcon />}
-							type="audio"
+							type="video"
 							name="video"
 							handleInputState={handleInputState}
 							value={data.video}
@@ -126,7 +126,7 @@ const VideoForm = () => {
 					<Button
 						type="submit"
 						label={id === "new" ? "Adcionar" : "Actualizar"}
-						isFetching={id === "new" ? createSongProgress : updateSongProgress}
+						isFetching={id === "new" ? createVideoProgress : updateVideoProgress}
 						style={{ marginLeft: "auto" }}
 					/>
 				</form>

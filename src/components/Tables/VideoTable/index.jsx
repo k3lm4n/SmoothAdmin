@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
-import { deleteSong } from "../../../redux/songsSlice/apiCalls";
+import { deleteVideo } from "../../../redux/videosSlice/apiCalls";
 import {
 	TableContainer,
 	Table,
@@ -17,14 +17,14 @@ import EditIcon from "@mui/icons-material/Edit";
 import DeleteIcon from "@mui/icons-material/Delete";
 import styles from "./styles.module.scss";
 
-const SongTable = ({ songs }) => {
+const VideoTable = ({ videos }) => {
 	const dispatch = useDispatch();
 	const [loading, setLoading] = useState(true);
 
 	setTimeout(() => setLoading(false), 1000);
 
 	const handleDelete = (id) => {
-		deleteSong(id, dispatch);
+		deleteVideo(id, dispatch);
 	};
 
 	return (
@@ -54,30 +54,30 @@ const SongTable = ({ songs }) => {
 				)}
 				{!loading && (
 					<TableBody>
-						{songs.length !== 0 &&
-							songs.map((song, index) => (
-								<TableRow key={song._id}>
+						{videos.length !== 0 &&
+							videos.map((video, index) => (
+								<TableRow key={video._id}>
 									<TableCell align="center">
-										<img className={styles.song_img} src={song.img} alt="" />
+										<img className={styles.video_img} src={video.img} alt="" />
 									</TableCell>
-									<TableCell align="center">{song.name}</TableCell>
-									<TableCell align="center">{song.artist}</TableCell>
+									<TableCell align="center">{video.name}</TableCell>
+									<TableCell align="center">{video.artist}</TableCell>
 									<TableCell align="center">
-										<Link to={`/songs/${song._id}`}>
+										<Link to={`/videos/${video._id}`}>
 											<IconButton className={styles.edit_btn}>
 												<EditIcon />
 											</IconButton>
 										</Link>
 										<IconButton
 											className={styles.delete_btn}
-											onClick={() => handleDelete(song._id)}
+											onClick={() => handleDelete(video._id)}
 										>
 											<DeleteIcon />
 										</IconButton>
 									</TableCell>
 								</TableRow>
 							))}
-						{songs.length === 0 && (
+						{videos.length === 0 && (
 							<TableRow>
 								<TableCell align="center"></TableCell>
 								<TableCell align="center"></TableCell>
@@ -98,4 +98,4 @@ const SongTable = ({ songs }) => {
 	);
 };
 
-export default SongTable;
+export default VideoTable;

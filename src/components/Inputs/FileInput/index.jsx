@@ -26,7 +26,7 @@ const FileInput = ({
 		const fileName = new Date().getTime() + value.name;
 		const storageRef = ref(
 			storage,
-			type === "audio" ? `/audio/${fileName}` : type==="image" ? `/image/${fileName}` : `/video/${fileName}`
+			type === "audio" ? `/audio/${fileName}` : type==="image" ? `/images/${fileName}` : `/video/${fileName}`
 		);
 		const uploadTask = uploadBytesResumable(storageRef, value);
 		uploadTask.on(
