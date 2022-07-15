@@ -135,4 +135,4 @@ const VideoForm = () => {
 	);
 };
 
-export default SongForm;
+export default VideoForm;

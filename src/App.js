@@ -10,7 +10,9 @@ import Dashboard from "./pages/Dashboard";
 import Login from "./pages/Login";
 import Users from "./pages/Users";
 import Songs from "./pages/Songs";
+import Videos from "./pages/Videos";
 import SongForm from "./components/Forms/SongForm";
+import VideoForm from "./components/Forms/VideoForm";
 import UserForm from "./components/Forms/UserForm";
 
 function App() {
@@ -44,9 +46,11 @@ function App() {
 					<main className="main">
 						<Route exact path="/" component={Dashboard} />
 						<Route path="/songs/:id" component={SongForm} />
+						<Route path="/videos/:id" component={VideoForm} />
 						<Route path="/users/:id" component={UserForm} />
 						<Route exact path="/users" component={Users} />
 						<Route exact path="/songs" component={Songs} />
+						<Route exact path="/videos" component={Videos} />
 					</main>
 				</Fragment>
 			)}
