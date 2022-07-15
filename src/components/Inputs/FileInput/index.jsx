@@ -26,7 +26,7 @@ const FileInput = ({
 		const fileName = new Date().getTime() + value.name;
 		const storageRef = ref(
 			storage,
-			type === "audio" ? `/audio/${fileName}` : `/images/${fileName}`
+			type === "audio" ? `/audio/${fileName}` : type==="image" ? `/image/${fileName}` : `/video/${fileName}`
 		);
 		const uploadTask = uploadBytesResumable(storageRef, value);
 		uploadTask.on(
@@ -39,7 +39,7 @@ const FileInput = ({
 			},
 			(error) => {
 				console.log(error);
-				toast.error("An error occured while uploading!");
+				toast.error("Ocorreu um erro ao fazer o upload");
 			},
 			() => {
 				getDownloadURL(uploadTask.snapshot.ref).then((url) => {
@@ -86,6 +86,12 @@ const FileInput = ({
 			)}
 			{type === "audio" && value && (
 				<audio
+					src={typeof value === "string" ? value : URL.createObjectURL(value)}
+					controls
+				/>
+			)}
+			{type === "video" && value && (
+				<video
 					src={typeof value === "string" ? value : URL.createObjectURL(value)}
 					controls
 				/>

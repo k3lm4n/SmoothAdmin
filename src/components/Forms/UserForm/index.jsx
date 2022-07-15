@@ -28,7 +28,7 @@ const months = [
 	{ name: "Dezembro", value: "12" },
 ];
 
-const genders = ["Masculino", "Femenino", "Não-binário"];
+const genders = ["male", "female", "non-binary"];
 
 const UserForm = () => {
 	const [data, setData] = useState({

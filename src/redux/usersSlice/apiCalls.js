@@ -5,7 +5,7 @@ import * as actions from "./index";
 export const createUser = async (user, dispatch) => {
 	dispatch(actions.createUserStart());
 	try {
-		const { data } = await axiosInstance.post("/users", user);
+		const { data } = await axiosInstance.post("/users/", user);
 		dispatch(actions.createUserSuccess(data.data));
 		toast.success(data.message);
 		return true;
