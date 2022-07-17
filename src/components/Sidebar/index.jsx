@@ -12,6 +12,7 @@ const options = [
 	{ name: "Dashboard", path: "/", icon: <DashboardIcon /> },
 	{ name: "Usuários", path: "/users", icon: <PeopleIcon /> },
 	{ name: "Músicas", path: "/songs", icon: <MusicNoteIcon /> },
+	{ name: "Videos", path: "/videos", icon: <MusicNoteIcon /> },
 ];
 
 const Sidebar = () => {
