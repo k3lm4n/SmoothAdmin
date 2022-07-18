@@ -14,6 +14,7 @@ import Videos from "./pages/Videos";
 import SongForm from "./components/Forms/SongForm";
 import VideoForm from "./components/Forms/VideoForm";
 import UserForm from "./components/Forms/UserForm";
+import { getAllVideos } from "./redux/videosSlice/apiCalls";
 
 function App() {
 	const user = useSelector((state) => state.auth.user);
@@ -33,6 +34,7 @@ function App() {
 			getAllSongs(dispatch);
 			getAllUsers(dispatch);
 			getAllPlaylists(dispatch);
+			getAllVideos(dispatch);
 		}
 	}, [dispatch, user]);
 
