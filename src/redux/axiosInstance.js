@@ -11,7 +11,7 @@ if (root) {
 }
 
 const axiosInstance = axios.create({
-	baseURL: "https://smoothplayer.herokuapp.com/api",
+	baseURL: "https://smoothback.onrender.com/api/",
 	headers: {
 		"Content-Type": "application/json",
 		"x-auth-token": token ? token : "",
